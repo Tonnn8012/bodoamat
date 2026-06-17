@@ -1,0 +1,17 @@
+{
+  "classes": {
+    "0": "gate",
+    "1": "red_box",
+    "2": "landing_pad"
+  },
+  "descriptions": {
+    "gate": "Portal/gerbang KRTI (bukaan 1500x1500mm, kedalaman 2000mm)",
+    "red_box": "Kotak P3K merah untuk medical delivery (620x415x145mm)",
+    "landing_pad": "Area pendaratan akhir (5000x5000mm)"
+  },
+  "colors_bgr": {
+    "gate": [0, 255, 0],
+    "red_box": [0, 0, 255],
+    "landing_pad": [255, 165, 0]
+  }
+}

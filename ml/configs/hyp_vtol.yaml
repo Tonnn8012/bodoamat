@@ -1,0 +1,44 @@
+# =============================================================================
+# KRTI VTOL 2026 — Hyperparameters Khusus Drone
+# =============================================================================
+# Hyperparameters ini dioptimasi untuk kondisi lomba VTOL:
+#   - Dataset kecil (ratusan gambar) → augmentasi agresif
+#   - Objek bisa terlihat kecil dari jauh (gate dari 5-10 meter)
+#   - Motion blur karena drone bergerak
+#   - Perubahan pencahayaan (indoor arena dengan lampu sorot)
+#   - Target deploy: Orange Pi 4 (RK3399, CPU only, 4GB RAM)
+#
+# Cara pakai:
+#   python scripts/train.py  (otomatis membaca file ini)
+# =============================================================================
+
+# --- Learning Rate ---
+lr0: 0.01          # Learning rate awal
+lrf: 0.01          # Learning rate akhir (fraction of lr0)
+momentum: 0.937    # SGD momentum / Adam beta1
+weight_decay: 0.0005
+
+# --- Warmup ---
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# --- Loss Weights ---
+box: 7.5           # Box loss gain
+cls: 0.5           # Class loss gain
+dfl: 1.5           # Distribution focal loss gain
+
+# --- Augmentasi (AGRESIF untuk dataset kecil) ---
+hsv_h: 0.015       # HSV-Hue augmentasi (±1.5%)
+hsv_s: 0.7         # HSV-Saturation augmentasi (±70%)
+hsv_v: 0.4         # HSV-Value/brightness augmentasi (±40%)
+degrees: 10.0      # Rotasi random ±10 derajat
+translate: 0.1     # Translasi random ±10%
+scale: 0.5         # Scaling random ±50%
+shear: 2.0         # Shear random ±2 derajat
+perspective: 0.0005 # Perspective warp (simulasi sudut pandang drone)
+flipud: 0.0        # Flip vertikal (MATIKAN — gate tidak pernah terbalik)
+fliplr: 0.5        # Flip horizontal 50% (gate simetris kiri-kanan)
+mosaic: 1.0        # Mosaic augmentasi (sangat membantu untuk dataset kecil)
+mixup: 0.1         # MixUp augmentasi (ringan, mencegah overfitting)
+copy_paste: 0.1    # Copy-paste augmentasi

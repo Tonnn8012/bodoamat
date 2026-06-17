@@ -1,0 +1,13 @@
+# =============================================================================
+# KRTI VTOL 2026 — ML Pipeline Requirements
+# =============================================================================
+
+# Kebutuhan Utama untuk Inferensi di Orange Pi 4 (Ringan & Cepat):
+numpy>=1.20.0
+opencv-python>=4.5.0
+onnxruntime>=1.14.0   # Library utama untuk menjalankan model ONNX di CPU ARM
+
+# Kebutuhan untuk Training & Eksport Model di Laptop (TIDAK perlu di Orange Pi):
+ultralytics>=8.0.0    # Engine YOLOv8 untuk training
+onnx>=1.13.0          # Dibutuhkan saat proses export_model.py
+onnxslim>=0.1.0       # (Opsional) Membantu kompresi model ONNX

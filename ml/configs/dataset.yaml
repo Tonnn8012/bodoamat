@@ -1,0 +1,36 @@
+# =============================================================================
+# KRTI VTOL 2026 — YOLO Dataset Configuration
+# =============================================================================
+# File ini dibaca oleh Ultralytics YOLO saat training.
+#
+# Cara pakai:
+#   python scripts/train.py  (otomatis membaca file ini)
+#
+# Format label (setiap file .txt di labels/):
+#   <class_id> <center_x> <center_y> <width> <height>
+#   Semua nilai ternormalisasi 0.0 - 1.0 relatif terhadap ukuran gambar.
+#
+# Contoh label (gate di tengah frame):
+#   0 0.5 0.5 0.3 0.4
+#
+# Tools labeling yang direkomendasikan:
+#   - Roboflow (roboflow.com) — web-based, gratis untuk dataset kecil
+#   - CVAT (cvat.ai) — open source, fitur lengkap
+#   - LabelImg — desktop app, simpel
+# =============================================================================
+
+# Path relatif terhadap lokasi file yaml ini
+path: ../data/dataset
+
+# Subfolder gambar (relatif terhadap 'path')
+train: images/train
+val: images/val
+
+# Jumlah kelas
+nc: 3
+
+# Nama kelas — URUTAN HARUS SAMA dengan ID di file label
+names:
+  0: gate          # Portal/gerbang yang harus dilewati drone (1500×1500mm bukaan)
+  1: red_box       # Kotak P3K merah untuk medical delivery drop (620×415×145mm)
+  2: landing_pad   # Area pendaratan akhir (5000×5000mm)
